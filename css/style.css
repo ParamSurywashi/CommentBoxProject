@@ -1,0 +1,77 @@
+.container{
+	width: 100%;
+	margin-left: 20%;
+}
+
+.container-box #area{
+	width: 50%;	
+	height: 100px;
+	font-family: arial;
+	font-size: 2em;
+}
+
+.container-box #name{
+	width: 50%;	
+	font-family: arial;
+	font-size: 1em;
+	margin-bottom: 8px;
+}
+.container-box h1{
+	margin-left: 20%;
+}
+
+.imgUser{
+	width: 22px;
+	height: 22px;
+}
+
+#spnName{
+	margin:0px;
+	font-size: 22px;
+}
+
+#cmdText{
+	padding: 0px;
+	margin: 10px;
+	font-size: 22px;
+}
+#comment{
+	display: none;
+	width: 50%;
+	padding: 2px;
+}
+#date{
+	float: right;
+}
+
+.cdbox{
+	padding: 2px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+}
+
+.replybox{
+	display: none;
+	padding: 2px;
+	border: 1px solid black;
+	width: 80%;
+	margin: 15px 0 5px 10% ;
+}
+.Rplcmdbox{
+	
+	display: none;
+	padding: 2px;
+	width: 80%;
+	margin: 15px 0 5px 10% ;
+}
+.rpy{
+     height: 20px;
+}
+.spn{
+	padding: -1% -1% -1% -1%;
+	margin-top: 5px;
+	border: 1px solid black;
+}
+@media screen and (max-width: 758px) {
+  
+}
