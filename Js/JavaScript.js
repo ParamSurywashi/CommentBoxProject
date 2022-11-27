@@ -43,17 +43,24 @@ var datetime = currentdate.getDate() + "/"
 
 function replyBtn(data){
 let rplyId= data.id.slice(8);
-
+	if(document.querySelectorAll("[id=rpy"+rplyId+"]").length > 0) {
+    alert("Hjkhkj "+rplyId);
+     }else{
+	
 	document.getElementById("replybox"+rplyId).innerHTML=document.getElementById("replybox"+rplyId).innerHTML+
 	`<input type="textfield"  id="rpy`+rplyId+`" class="rpy"/> <br><br>`+
 `	<button id="rplCmdBtn`+rplyId+`" onclick="sendRply(this)">Send Reply</button> `;
   document.querySelectorAll('#replybox'+rplyId)[0].style.display="block";
+	 }
   }
 
 function sendRply(data){
 	let CmdId= data.id.slice(9);
 	let CmdData=document.querySelectorAll('.rpy')[0].value;
-	
+
+	if(CmdData==""){
+		alert("Please Reply in Box.... ");
+	}else{
 	//let replyData=document.querySelectorAll('#Rplcmdbox')[0].value;
 	document.getElementById("replybox"+CmdId).innerHTML=``;
 	
@@ -62,6 +69,7 @@ function sendRply(data){
 	` <div id="spn`+CmdId+`" class="spn">`+CmdData+`</div>`;
 	
   document.querySelectorAll('#Rplcmdbox'+CmdId)[0].style.display="block";
+	}
   }
 function deleteCmd(data)
 {
