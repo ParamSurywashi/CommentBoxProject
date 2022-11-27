@@ -44,13 +44,14 @@ var datetime = currentdate.getDate() + "/"
 function replyBtn(data){
 let rplyId= data.id.slice(8);
 	if(document.querySelectorAll("[id=rpy"+rplyId+"]").length > 0) {
-    alert("Hjkhkj "+rplyId);
+    alert("Already have a Reply Box");
      }else{
 	
 	document.getElementById("replybox"+rplyId).innerHTML=document.getElementById("replybox"+rplyId).innerHTML+
 	`<input type="textfield"  id="rpy`+rplyId+`" class="rpy"/> <br><br>`+
 `	<button id="rplCmdBtn`+rplyId+`" onclick="sendRply(this)">Send Reply</button> `;
   document.querySelectorAll('#replybox'+rplyId)[0].style.display="block";
+  
 	 }
   }
 
@@ -92,3 +93,11 @@ function getLikerCount(id){
 	//count++;
 	return count;
 }
+
+/*function loadFunc(){
+let w=window.innerWidth;
+	let h=window.innerHeight;
+	alert(w+"    "+h);
+	document.getElementsByTagName("body").style.width=w;
+	document.getElementsByTagName("body").style.height=h;
+} */

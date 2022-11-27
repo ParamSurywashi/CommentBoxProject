@@ -1,6 +1,11 @@
+body{
+	display: inline;
+	margin: 0px;
+}
+
 .container{
 	width: 100%;
-	margin-left: 20%;
+	margin-left: 18%;
 }
 
 .container-box #area{
@@ -17,7 +22,7 @@
 	margin-bottom: 8px;
 }
 .container-box h1{
-	margin-left: 20%;
+	margin-left: 18%;
 }
 
 .imgUser{
@@ -72,6 +77,9 @@
 	margin-top: 5px;
 	border: 1px solid black;
 }
-@media screen and (max-width: 758px) {
-  
+@media screen and (max-width: 763px) {
+  .container{
+	width: 100%;
+	margin-left: 0%;
+}
 }
