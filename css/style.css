@@ -4,7 +4,7 @@ body{
 }
 
 .container{
-	width: 100%;
+	width: auto;
 	margin-left: 18%;
 }
 
@@ -77,9 +77,9 @@ body{
 	margin-top: 5px;
 	border: 1px solid black;
 }
-@media screen and (max-width: 763px) {
+@media screen and (max-width: 899px) {
   .container{
-	width: 100%;
+	width: 90%;
 	margin-left: 0%;
 	margin: 5px;
 }
