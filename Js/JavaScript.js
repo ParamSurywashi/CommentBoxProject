@@ -1,8 +1,20 @@
+function loadFunc(){
+	let x=window.innerWidth;
+	let y= window.innerHeight;
+	//document.getElementsByTagName("body")[0].style.backgroundImage="url('img/ccc.jpg')";
+	document.getElementsByTagName("body")[0].style.backgroundColor="#D69156";
+	document.getElementsByTagName("body")[0].style.backgroundSize = x+"px "+y+"px";
+	
+}
 
 let commentDraw=null;
 function ClickFun(){
 	if(document.querySelectorAll('#area')[0].value == "" || document.querySelectorAll('#name')[0].value == ""){
+	  if(document.querySelectorAll('#area')[0].value == ""){
 	  alert("Please Comment in Text Field");
+	  }else if(document.querySelectorAll('#name')[0].value == ""){
+		  alert("Please Type User Name");
+	  }
 	}else{
 	let area =createComment();
 	let Usrname=document.querySelectorAll('#name')[0].value;
