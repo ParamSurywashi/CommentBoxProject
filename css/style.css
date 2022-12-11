@@ -115,32 +115,43 @@ text-align: center;
 	 border-radius: 5px;
 	border: 2px solid black;
 }
-/*
-@media screen and (max-width: 990px) {
-  .container{
+@media screen and (max-width: 775px) {
+	.container{
 	width: 90%;
 	margin-left: 0%;
 	margin: 5px;
 }
 
 .container-box #area{
-	width: 100%;	
+	width: 80%;	
 }
 
 .container-box #name{
-	width: 100%;	
+	width: 80%;	
 }
-
-#date{
+	#date{
 	display: none;
+    } 
+#addcmtbtn{
+	margin-left: 10%;
+}
+#errMsgName{
+	color: red;
+	position: absolute;
+	margin-left: auto;
+	font-size: 12px;
+}
+ #errMsgArea{
+	color: red;
+	position: absolute;
+	margin-left: auto;
+	font-size: 12px;
+}
+#comment{
+	display: none;
+	width: 80%;
+	padding: 2px;
 }
 
-#comment{
-	width: 100%;
 }
-#text_comment{
-	margin-left: 14%
-	font-size: 18px;
-}
-}
-*/
+
