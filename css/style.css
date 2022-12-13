@@ -46,10 +46,10 @@ text-align: center;
 #addcmtbtn{
 	margin-left: 25%;
 }
-.imgUser{
+/*.imgUser{
 	width: 22px;
 	height: 22px;
-}
+}*/
 #errMsgName{
 	color: red;
 	position: absolute;
@@ -83,7 +83,12 @@ text-align: center;
 #date{
 	float: right;
 }
-
+img {
+    content:url(../img/UserIcon.png);
+	
+	width: 22px;
+	height: 22px;
+}
 .cdbox{
 	padding: 2px;
 	margin-bottom: 20px;
