@@ -37,7 +37,7 @@ function ClickFun(){
 	let dateTime=getDateTime();
 	
 	total_text = window.localStorage.length;
-	console.log(total_text);
+	//console.log(total_text);
 
   document.getElementById("comment").innerHTML=document.getElementById("comment").innerHTML+
 	`<div id="cdbox`+total_text+`" class="cdbox"> <img id="imgId`+total_text+`" class="imgUser"> <span id="spnName">`+Usrname+`</span>`
@@ -50,9 +50,9 @@ function ClickFun(){
 
 	document.querySelectorAll('#comment')[0].style.display="block";
 	
-alert("cdbox"+total_text);
+
 let localData= document.getElementById("cdbox"+total_text).outerHTML;
-console.log(localData);
+//console.log(localData);
 window.localStorage.setItem(total_text, localData);
 
 	document.querySelectorAll('#name')[0].value = "";
