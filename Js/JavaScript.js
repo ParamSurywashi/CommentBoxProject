@@ -9,8 +9,9 @@ function loadFunc(){
 	}else{
 		for(let items=0; items<window.localStorage.length; items++){
 			//console.log(items);
-			//console.log(window.localStorage[items]);
-			lclStorageData=window.localStorage[items];
+			var key = localStorage.key(items);
+			
+			lclStorageData=window.localStorage[key];
 			document.getElementById("comment").innerHTML=document.getElementById("comment").innerHTML+``+lclStorageData;
 	    document.querySelectorAll('#comment')[0].style.display="block";
 		}
@@ -116,8 +117,7 @@ window.localStorage.setItem(CmdId, localData);
 function deleteCmd(data)
 {
 	let deleteId= data.id.slice(9);
-  document.getElementById("cdbox"+deleteId).innerHTML="";
-  document.getElementById("cdbox"+deleteId).style.display="none";
+  document.getElementById("cdbox"+deleteId).remove();
   window.localStorage.removeItem(deleteId);
 }
 
@@ -128,6 +128,8 @@ function likeBtn(data)
 	likeCount++;
 	
 	document.getElementById("likeCounter"+likeId).innerHTML=`<small>`+likeCount+`</small>`;
+	let localData= document.getElementById("cdbox"+likeId).outerHTML;
+	window.localStorage.setItem(likeId, localData);
 }
 
 function getLikerCount(id){
