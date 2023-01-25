@@ -1,24 +1,35 @@
+let total_text=0;
+
 function loadFunc(){
 	let x=window.innerWidth;
 	let y= window.innerHeight;
+	let LocalStorageLength;
 	document.getElementsByTagName("body")[0].style.backgroundColor="#CCF381";
 
+	const LoadlocalStorage = JSON.parse(window.localStorage.getItem("UserData"));
 	
-	if(window.localStorage.length == 0){
+	if(Object.keys(LoadlocalStorage).length >0){
+		let ObjKeys= Object.keys(LoadlocalStorage);
+	
+		let LocalStorageLengthAdd = ObjKeys[ObjKeys.length-1].slice(6);
+		total_text=Number.parseInt(LocalStorageLengthAdd) +1;
+		LocalStorageLength = Number.parseInt(LocalStorageLengthAdd) +1;
+	}
+	if(LocalStorageLength == 0){
 		//alert("NULLLLLLL");
 	}else{
-		for(let items=0; items<window.localStorage.length; items++){
-			//console.log(items);
-			var key = localStorage.key(items);
-			
-			lclStorageData=window.localStorage[key];
+		for(let items=0; items<LocalStorageLength; items++){
+			lclStorageData=LoadlocalStorage["CmdKey"+items];
 			document.getElementById("comment").innerHTML=document.getElementById("comment").innerHTML+``+lclStorageData;
-	    document.querySelectorAll('#comment')[0].style.display="block";
+			ObjectArray["CmdKey"+items]= lclStorageData;
+	        document.querySelectorAll('#comment')[0].style.display="block";
 		}
 	}
 }
 
 let commentDraw=null;
+
+let ObjectArray= {};
 function ClickFun(){
 	
 		 document.getElementById("errMsgName").innerText="";
@@ -36,9 +47,6 @@ function ClickFun(){
 	let area =createComment();
 	let Usrname=document.querySelectorAll('#name')[0].value;
 	let dateTime=getDateTime();
-	
-	total_text = window.localStorage.length;
-	//console.log(total_text);
 
   document.getElementById("comment").innerHTML=document.getElementById("comment").innerHTML+
 	`<div id="cdbox`+total_text+`" class="cdbox"> <img id="imgId`+total_text+`" class="imgUser"> <span id="spnName">`+Usrname+`</span>`
@@ -52,15 +60,30 @@ function ClickFun(){
 	document.querySelectorAll('#comment')[0].style.display="block";
 	
 
-let localData= document.getElementById("cdbox"+total_text).outerHTML;
-//console.log(localData);
-window.localStorage.setItem(total_text, localData);
 
+let localData= document.getElementById("cdbox"+total_text).outerHTML;
+
+setLocalDataForLocalstorage(localData, total_text);
 	document.querySelectorAll('#name')[0].value = "";
 	document.querySelectorAll('#area')[0].value = "";
 	}
+	total_text++;
 }
 	
+function setLocalDataForLocalstorage(localData, Idx){
+	
+	let localStorageOldData= window.localStorage.getItem("UserData");
+	let keyForLocalStorage = "CmdKey"+Idx;
+const newObjectUser={};
+newObjectUser[keyForLocalStorage]=localData;
+if(localStorageOldData==null){
+    ObjectArray["CmdKey"+Idx]= localData;
+}else{
+	ObjectArray = {...ObjectArray, ...newObjectUser};
+}
+
+window.localStorage.setItem( "UserData",JSON.stringify(ObjectArray));
+}
 let createComment=function(){
 	var area = document.querySelectorAll('#area')[0].value;
 	return area;
@@ -110,15 +133,22 @@ function sendRply(data){
   document.querySelectorAll('#Rplcmdbox'+CmdId)[0].style.display="block";
   
 let localData= document.getElementById("cdbox"+CmdId).outerHTML;
-window.localStorage.setItem(CmdId, localData);
-  
+setLocalDataForLocalstorage(localData, CmdId);
+
 	}
   }
 function deleteCmd(data)
 {
 	let deleteId= data.id.slice(9);
   document.getElementById("cdbox"+deleteId).remove();
-  window.localStorage.removeItem(deleteId);
+  let localStorageOldData= JSON.parse(window.localStorage.getItem("UserData"));
+
+ 
+delete localStorageOldData["CmdKey"+deleteId];
+window.localStorage.setItem( "UserData",JSON.stringify(localStorageOldData));
+
+
+
 }
 
 function likeBtn(data)
@@ -129,7 +159,7 @@ function likeBtn(data)
 	
 	document.getElementById("likeCounter"+likeId).innerHTML=`<small>`+likeCount+`</small>`;
 	let localData= document.getElementById("cdbox"+likeId).outerHTML;
-	window.localStorage.setItem(likeId, localData);
+	setLocalDataForLocalstorage(localData, likeId);
 }
 
 function getLikerCount(id){
@@ -149,10 +179,4 @@ function getBase64Image(img) {
 
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
-/*function loadFunc(){
-let w=window.innerWidth;
-	let h=window.innerHeight;
-	alert(w+"    "+h);
-	document.getElementsByTagName("body").style.width=w;
-	document.getElementsByTagName("body").style.height=h;
-} */
+
